@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #f3f7f4; /* Subtle grass-tinged light grey */
+  --foreground: #0f172a;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  
+  /* Lush turf colors */
+  --pitch-green: #2e7d48;
+  --pitch-green-light: #3b915d;
+  --pitch-green-dark: #1e4d30;
+  
+  /* Primary Green Theme */
+  --primary: #16a34a;
+  --primary-hover: #15803d;
+  --primary-light: rgba(22, 163, 74, 0.08);
+  --primary-glow: rgba(22, 163, 74, 0.25);
+  
+  /* Accent colors */
+  --accent-blue: #2563eb;
+  --accent-blue-light: rgba(37, 99, 235, 0.08);
+  --accent-gold: #ca8a04;
+  --accent-red: #dc2626;
+  --accent-yellow: #eab308;
+  
+  /* Refined Glassmorphism (Light Theme) */
+  --bg-glass: rgba(255, 255, 255, 0.28);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.35);
+  --border-glass: rgba(255, 255, 255, 0.85);
+  --border-glass-dark: rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 8px 32px 0 rgba(16, 46, 26, 0.05);
+  --shadow-premium: 0 20px 40px -15px rgba(15, 23, 42, 0.06);
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Background Football Field Floodlight Blobs */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.bg-blob-1 {
+  width: 800px;
+  height: 800px;
+  top: 5%;
+  left: 5%;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.28) 0%, rgba(34, 197, 94, 0) 70%);
+  animation: float-blob-1 25s ease-in-out infinite alternate;
+}
+
+.bg-blob-2 {
+  width: 900px;
+  height: 900px;
+  top: 10%;
+  right: 5%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0) 70%);
+  animation: float-blob-2 30s ease-in-out infinite alternate;
+}
+
+.bg-blob-3 {
+  width: 750px;
+  height: 750px;
+  top: 35%;
+  left: 30%;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, rgba(234, 179, 8, 0) 70%);
+  animation: float-blob-3 20s ease-in-out infinite alternate;
+}
+
+@keyframes float-blob-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(80px, 60px) scale(1.1); }
+}
+
+@keyframes float-blob-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-80px, -60px) scale(1.08); }
+}
+
+@keyframes float-blob-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -60px) scale(0.95); }
+}
+
+/* Glassmorphic Panels */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-glass), inset 0 0 0 1.5px rgba(255, 255, 255, 0.65);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(22, 163, 74, 0.35);
+  box-shadow: 0 12px 36px -8px rgba(22, 163, 74, 0.08), inset 0 0 0 1.5px rgba(255, 255, 255, 0.8);
+}
+
+.glass-panel-heavy {
+  background: var(--bg-glass-heavy);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-premium), inset 0 0 0 2px rgba(255, 255, 255, 0.75);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-sm);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(22, 163, 74, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -10px rgba(16, 46, 26, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+/* Matchday Ultimate Team Gradients */
+.football-card-gold {
+  background: linear-gradient(135deg, rgba(254, 240, 138, 0.9) 0%, rgba(202, 138, 4, 0.8) 100%) !important;
+  border: 2px solid #ca8a04 !important;
+}
+.football-card-silver {
+  background: linear-gradient(135deg, rgba(241, 245, 249, 0.95) 0%, rgba(148, 163, 184, 0.8) 100%) !important;
+  border: 2px solid #94a3b8 !important;
+}
+.football-card-bronze {
+  background: linear-gradient(135deg, rgba(255, 237, 213, 0.95) 0%, rgba(180, 83, 9, 0.8) 100%) !important;
+  border: 2px solid #b45309 !important;
+}
+
+/* Animations */
+@keyframes tvReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+}
+
+@keyframes pitchScan {
+  0% { top: -2%; }
+  50% { top: 102%; }
+  100% { top: -2%; }
+}
+
+.pitch-scan-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to bottom, rgba(34, 197, 94, 0) 0%, rgba(34, 197, 94, 0.4) 50%, rgba(34, 197, 94, 0) 100%);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+  animation: pitchScan 6s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes spin-ball {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+}
+
+@keyframes score-pop-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.35); color: #ca8a04; filter: drop-shadow(0 0 10px rgba(202, 138, 4, 0.5)); }
+  100% { transform: scale(1); }
+}
+
+.animate-reveal {
+  animation: tvReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-ball {
+  animation: spin-ball 2s linear infinite;
+}
+
+.animate-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  animation: pulse-ring 1.8s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+.score-pop {
+  animation: score-pop-animation 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* TV Broadcast UI Layouts */
+.pitch-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 15px 45px -10px rgba(16, 46, 26, 0.2), inset 0 0 40px rgba(0, 0, 0, 0.15);
+  border: 4px solid #ffffff;
+}
+
+.pitch-greenfield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Alternating turf vertical stripes */
+  background: repeating-linear-gradient(
+    90deg,
+    #2f854a 0px,
+    #2f854a 60px,
+    #389456 60px,
+    #389456 120px
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pitch-line {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15)); /* Realistic chalk line shadow */
+}
+
+.pitch-center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+
+.pitch-center-line {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0;
+}
+
+.pitch-penalty-area-top {
+  top: 0;
+  left: 20%;
+  width: 60%;
+  height: 18%;
+  border-top: none;
+}
+
+.pitch-penalty-area-bottom {
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 18%;
+  border-bottom: none;
+}
+
+.pitch-box-markings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Styled Dropdowns */
+.select-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 38px !important;
+  box-shadow: 0 4px 12px rgba(16, 46, 26, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(22, 163, 74, 0.15);
+  font-family: var(--font-sans);
+}
+
+.select-field:hover {
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.08);
+  transform: translateY(-1px);
+}
+
+.select-field:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15) !important;
+}
+
+/* Scrollbars styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(16, 163, 74, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 163, 74, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 163, 74, 0.4);
+}
+
+/* Animated Tactical Backdrop Grid */
+.tactical-grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(rgba(22, 163, 74, 0.04) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(22, 163, 74, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px, 100px 100px;
+  background-position: 0 0, 25px 25px;
+  animation: grid-drift 90s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes grid-drift {
+  0% { background-position: 0 0, 25px 25px; }
+  100% { background-position: 100px 100px, 225px 225px; }
+}
+
+/* Floating vector strategical chalkboard drawings */
+@keyframes drift-slow {
+  0% { transform: translateY(0px) rotate(0deg) scale(1); }
+  33% { transform: translateY(-15px) rotate(2deg) scale(1.03); }
+  66% { transform: translateY(10px) rotate(-2deg) scale(0.97); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+
+.floating-tactical-item {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.038;
+  color: var(--primary);
+  z-index: -1;
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.1, 0.8, 0.2, 1);
+}
+
+
